@@ -165,13 +165,7 @@ ul, li, ol{
 }
 
 .principal{
-    height: 600px;
     width: 1170px;
-    margin:auto;
-}
-
-.feed{
-    height: 600px;
     margin:auto;
 }
 
