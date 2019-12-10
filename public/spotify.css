@@ -4,6 +4,38 @@
     border: 0;
 }
 
+.navbar li a{
+        text-transform: none;
+        text-decoration-color: none;
+        text-decoration: none;
+        color: #FFF;
+        fill:#FFF;
+}
+
+.caixa-texto{
+    height: 20px;
+    width: 200px;
+    font-size: 15px;
+}
+
+.button{
+    height: 30px;
+    width: 150px;
+    font-size: 15px;
+    font-weight: bold;
+}
+.publica{
+    height: 300px;
+    width: 900px;
+    float: right;
+}
+
+.login{
+    height: 300px;
+    width: 200px;
+    float: left;
+}
+
 .search{
     line-height: 71px;
     margin-top: 5px;

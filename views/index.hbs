@@ -77,48 +77,50 @@
             </div>
 
             <div class="principal">
+                <div class="login">
                 <h1>Login</h1><br>
                     <form action="/login" method="post">                    
                         <label for="login"> Email: </label>
-                        <input type="text" id="login "name="login" maxlength="30" value=""></input> <br><br>
+                        <input type="text" class="caixa-texto" id="login "name="login" maxlength="30" value=""></input> <br><br>
                         <label for="senha"> Senha: </label>
-                        <input type="password" id="senha" name="senha" maxlength="8" value=""></input><br><br>
-                        <input type="submit" value="Entrar"><br><br>
+                        <input type="password" class="caixa-texto" id="senha" name="senha" maxlength="8" value=""></input><br><br>
+                        <input type="submit" class="button" value="Entrar"><br><br>
                         <ul>
                             {{#each mensagem as |erro|}}
                             <li>{{erro}}</li>
                             {{/each}}
                         </ul>
                     </form>
-
+                </div>
+                <div class="publica">
                     <!-- <form method="POST" action="/publica"> -->
-						<input type="text" name="titulo_publica" id="titulo_publica" value="" />
-						<input type="submit" class="blueGradientButton" id="publica" value="PUBLICAR" />
+                        <h1>Postagem</h1><br>
+						<input type="text" class="caixa-texto" name="titulo_publica" id="titulo_publica" value=""/><br><br>
+						<input type="submit" class="button" id="publica" value="Postar" />
 					<!-- </form> -->
-
+                 </div>   
                     
                     <!-- <form action="/pesquisa" method="POST"> -->
+                        <h1>Pesquisa</h1><br>
 						<div class = "searchButton">
 							<!-- <input type="image" src="./imgs/ic_search_white_36dp.png" id="image_search" /> -->
 							<!-- <img src="./imgs/ic_search_white_36dp.png" alt="Lupa de pesquisa"></img> -->
 						</div>
 						<div class = "searchBar">
-							<input type="text" name="search" id="search" value="">
+							<input type="text" class="caixa-texto" name="search" id="search" value="">
 						</div>
 					<!-- </form> -->
                     <br><br>
-                    
+               
                 <div id="musicas">
                 {{#each musicas as |item|}}
                     <div class="post"> 
                         <h2>{{item.texto}}</h2>
-                        <h3>Autor: {{item.author}}</h3>
+                        <h3>Autor: {{item.author}}</h3><br> 
                         <img class="item-img" src={{item.imagem}}>
-                    </div>
+                    </div> <br><br>        
                 {{/each}}
-                </div>
-
-                <br><br>             
+                </div>                    
               
             </div>
         </div>   
@@ -139,9 +141,9 @@
 				    for (var i in json_musicas) {
 				    html_musicas += '<div class="post"> \
                                     <h2>' + json_musicas[i].texto + '</h2> \
-                                    <h3>Autor:' + json_musicas[i].author + '</h3>\
-                                    <img class="item-img" scr="./lua.jpg">\
-                                </div>';
+                                    <h3>Autor:' + json_musicas[i].author + '</h3><br> \
+                                    <img class="item-img" src=".' + json_musicas[i].imagem + '">\
+                                </div><br><br>';
 				    }
 				    return html_musicas;
 			    }
@@ -157,8 +159,11 @@
 						    musicas.innerHTML = JSONtoHTML_musicas(JSON.parse(xmlhttp.responseText));
 						    search.value = "";
 					    }
-				    };
+				    };                 
+
 				    xmlhttp.send("titulo_publica=" + titulo_publica.value);
+
+                    titulo_publica.value= '';
 			    });
 			
 			    setInterval(function(){

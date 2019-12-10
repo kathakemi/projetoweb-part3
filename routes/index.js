@@ -213,7 +213,7 @@ router
         req.cookies.userid === null ||
         req.cookies.userid === undefined
       ) {
-        console.log("Author não informado!");
+        console.log("Autor não informado!");
       }
 
       if (mensagem.length > 0) {
@@ -308,17 +308,23 @@ router.post('/pesquisa', (req, res) => {
 
 });
 
-router.post('/publica', (req, res) => {
-  let newPost = new Postagem({
-    texto: req.body.titulo_publica.trim(),
-    author: '1256478979',
-    imagem: '/uploads/imagem-1574458245083.jpg'
+router.post('/publica', upload.single("imagem"), (req, res) => {
+
+  if (req.body.titulo_publica == ''){
+    console.log("Música inválida");
+  }
+  else{
+    let newPost = new Postagem({
+      texto: req.body.titulo_publica.trim(),
+      author: '1256478979',
+      imagem: './lua.jpg'
     });
 
     newPost.save().then(user => {    
       console.log('Musica salva com sucesso!')
       res.end(JSON.stringify(user));
     });  
+  }
 });
 
 router.get('/musicas', (req, res) => {
